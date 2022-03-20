@@ -12,7 +12,7 @@
         "https://www.roblox.com/" 
     ],
     "background": {
-        "scripts": ["jQuery.js", "Logger.js"]
+        "scripts": ["Logger.js"]
     },
     "icons": { "16": "icon.png",
            "48": "icon.png",
